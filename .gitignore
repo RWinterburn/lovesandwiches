@@ -1,0 +1,7 @@
+core.Microsoft*
+core.mango*
+core.python*
+env.python
+_pycache_/
+*.py[cod]
+creds.json
