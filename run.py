@@ -56,6 +56,15 @@ def update_sales_worksheet(data):
     sales_worksheet.append_row(data)  # Data is already in integer format
     print("Sales worksheet updated successfully.\n")
     
+def update_surplus_worksheet(data):
+    """
+    Update surplus worksheet with new data.
+    """
+    print("Updating surplus worksheet...\n")
+    surplus_worksheet = SHEET.worksheet("surplus")
+    surplus_worksheet.append_row(data)  # Data is already in integer format
+    print("Sales worksheet updated successfully.\n")
+    
 def calculate_surplus_data(sales_row):
     """
     Compare sales and calculate surplus for each item.
@@ -79,7 +88,7 @@ def main():
     update_sales_worksheet(data)
     # Assuming you want to calculate surplus data after updating sales
     new_surplus_data = calculate_surplus_data(data)
-    print(new_surplus_data)
+    update_surplus_worksheet(new_surplus_data)
 
 # Calling the main function to run the program
 main()
