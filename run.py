@@ -65,6 +65,16 @@ def update_surplus_worksheet(data):
     surplus_worksheet.append_row(data)  # Data is already in integer format
     print("Sales worksheet updated successfully.\n")
     
+def update_worksheet(data, worksheet):
+    """
+    Receives the list of integers to be instered into a worksheet 
+    update the relevant worksheet with the data provided
+    """
+    print(f"Updating {worksheet} worksheet...\n")
+    worksheet_to_update = SHEET.worksheet(worksheet)
+    worksheet_to_update.append_row(data)
+    print(f"{worksheet} worksheet updated successfully\n")
+    
 def calculate_surplus_data(sales_row):
     """
     Compare sales and calculate surplus for each item.
@@ -85,10 +95,10 @@ def main():
     """
     print("Welcome to Love Sandwiches Data Automation")
     data = get_sales_data()
-    update_sales_worksheet(data)
+    update_worksheet(data, "sales")
     # Assuming you want to calculate surplus data after updating sales
     new_surplus_data = calculate_surplus_data(data)
-    update_surplus_worksheet(new_surplus_data)
+    update_surplus_worksheet(new_surplus_data, "surplus")
 
 # Calling the main function to run the program
 main()
