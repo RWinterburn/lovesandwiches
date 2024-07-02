@@ -65,6 +65,8 @@ def update_surplus_worksheet(data):
     surplus_worksheet.append_row(data)  # Data is already in integer format
     print("Sales worksheet updated successfully.\n")
     
+    
+    #this code does both the above functions its called refactoring
 def update_worksheet(data, worksheet):
     """
     Receives the list of integers to be instered into a worksheet 
@@ -89,6 +91,22 @@ def calculate_surplus_data(sales_row):
     
     return surplus_data
 
+def get_last_5_entries_sales():
+    """
+    Collects collumns of data fromsales woreksheet collecting 
+    last 5 sandwich entries
+    """
+    sales = SHEET.worksheet("sales")
+   # collumn = sales.col_values()
+    #print(collumn)
+    # fff
+    
+    columns = []
+    for ind in range(1, 7):
+        column =sales.col_values(ind)
+        columns.append(column[-5:])
+    pprint(columns)
+
 def main():
     """
     Run all programs.
@@ -98,7 +116,9 @@ def main():
     update_worksheet(data, "sales")
     # Assuming you want to calculate surplus data after updating sales
     new_surplus_data = calculate_surplus_data(data)
-    update_surplus_worksheet(new_surplus_data, "surplus")
+    update_surplus_worksheet(new_surplus_data, "surplus") #refactored code
 
 # Calling the main function to run the program
-main()
+# main()
+
+get_last_5_entries_sales()
